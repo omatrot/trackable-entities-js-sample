@@ -1,7 +1,18 @@
-import { Category } from './category';
-import { Product } from './product';
+import { Category } from './entities';
+import { Product } from './entities';
+
+import {
+  DeserializeArray,
+  Deserialize,
+  InstantiationMethod,
+  RefCycleDetectionEnable,
+  RefClean,
+  RefCycleDetectionDisable,
+  SerializeArray
+} from "dcerialize";
 
 export class MockNorthwind {
+
   Categories = [
     { categoryId: 1, categoryName: 'Beverages' } as Category,
     { categoryId: 2, categoryName: 'Condiments' } as Category,
@@ -13,6 +24,7 @@ export class MockNorthwind {
     { categoryId: 8, categoryName: 'Seafood' } as Category,
   ];
 
+
   Products = [
     { productId: 1, productName: 'Chai', unitPrice: 10, categoryId: 1, category: this.Categories[0] } as Product,
     { productId: 2, productName: 'Chang', unitPrice: 20, categoryId: 1, category: this.Categories[0] } as Product,
@@ -22,6 +34,13 @@ export class MockNorthwind {
   ];
 
   constructor() {
+
+    const test = SerializeArray(this.Products, () => Product);
+    this.Products = DeserializeArray(test, () => Product);
+
+    const test2 = SerializeArray(this.Categories, () => Category);
+    this.Categories = DeserializeArray(test2, () => Category);
+
     this.Categories[0].products = [this.Products[0], this.Products[1]];
     this.Categories[1].products = [this.Products[2], this.Products[3], this.Products[4]];
   }

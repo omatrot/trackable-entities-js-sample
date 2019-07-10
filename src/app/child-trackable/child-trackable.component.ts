@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ITrackable, TrackableSet, TrackingState } from 'trackable-entities';
 
-import { Product } from '../models/product';
+import { Product } from '../models/entities';
 
 
 @Component({
