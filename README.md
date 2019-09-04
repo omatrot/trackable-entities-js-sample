@@ -1,3 +1,8 @@
+WARNING! WORK IN PROGRESS
+
+This fork is aimed to test various serializer solutions.
+
+
 # Sample Angular App for trackable-entities-js
 
 Sample app for [trackable-entities-js](https://github.com/TrackableEntities/trackable-entities-js).
