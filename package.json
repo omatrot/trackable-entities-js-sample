@@ -21,6 +21,7 @@
     "@angular/router": "~8.0.1",
     "dcerialize": "^3.6.4",
     "rxjs": "~6.4.0",
+    "serializr": "^1.5.1",
     "trackable-entities": "^1.0.0-alpha.2",
     "tslib": "^1.9.0",
     "zone.js": "~0.9.1"

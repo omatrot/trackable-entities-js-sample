@@ -1,0 +1,35 @@
+import { TrackableEntity } from 'trackable-entities';
+
+import {
+  createModelSchema,
+  primitive,
+  reference,
+  list,
+  object,
+  identifier,
+  serialize,
+  deserialize,
+  getDefaultModelSchema,
+  serializable,
+} from 'serializr';
+import { Category } from './categoryserializrdecorators';
+
+
+export class Product extends TrackableEntity {
+  @serializable productId: number;
+  @serializable productName: string;
+  @serializable unitPrice: number;
+  @serializable categoryId: number;
+  @serializable(object(Category)) category: Category;
+
+  constructor();
+  constructor(productId: number, productName: string, unitPrice: number, category?: Category);
+  constructor(productId?: number, productName?: string, unitPrice?: number, category?: Category) {
+    super();
+    this.productId = productId;
+    this.productName = productName;
+    this.unitPrice = unitPrice;
+    this.category = category;
+    return super.proxify(this);
+  }
+}

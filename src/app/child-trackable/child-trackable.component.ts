@@ -1,8 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ITrackable, TrackableSet, TrackingState } from 'trackable-entities';
-
-import { Product } from '../models/entities';
-
+import { Product } from '../models/productdcerialize';
 
 @Component({
   selector: 'app-child-trackable',

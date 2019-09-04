@@ -1,5 +1,4 @@
-import { Category } from './entities';
-import { Product } from './entities';
+
 
 import {
   DeserializeArray,
@@ -10,6 +9,24 @@ import {
   RefCycleDetectionDisable,
   SerializeArray
 } from "dcerialize";
+
+/* import {
+  createModelSchema,
+  primitive,
+  reference,
+  list,
+  object,
+  identifier,
+  serialize,
+  deserialize,
+} from 'serializr'; */
+import { Category } from './categorydcerialize';
+import { Product } from './productdcerialize';
+/* import { Category } from './categoryserializrdecorators';
+import { Product } from './productserializrdecorators'; */
+/* import { Category } from './categorydcerialize';
+import { Product } from './productdcerialize'; */
+
 
 export class MockNorthwind {
 
@@ -33,13 +50,31 @@ export class MockNorthwind {
     { productId: 5, productName: 'Chef Anton\'s Gumbo Mix', unitPrice: 50, categoryId: 2, category: this.Categories[1] } as Product,
   ];
 
+
   constructor() {
+/*
+    const test2 = SerializeArray(this.Products, () => Product);
+    this.Products = DeserializeArray(test2, () => Product, undefined, undefined, undefined, InstantiationMethod.ObjectCreate);
 
-    const test = SerializeArray(this.Products, () => Product);
-    this.Products = DeserializeArray(test, () => Product);
+    const test3 = SerializeArray(this.Categories, () => Category);
+    this.Categories = DeserializeArray(test2, () => Category, undefined, undefined, undefined, InstantiationMethod.ObjectCreate);
+*/
+/*     createModelSchema(Category, {
+      categoryId: primitive(),
+      categoryName: primitive(),
+      products: list(object(Product))
+    });
 
-    const test2 = SerializeArray(this.Categories, () => Category);
-    this.Categories = DeserializeArray(test2, () => Category);
+    createModelSchema(Product, {
+      productId: primitive(),
+      productName: primitive(),
+      unitPrice: primitive(),
+      categoryId: primitive(),
+      category: object(Category)
+    })
+
+    const test = serialize(this.Products[0]);
+    this.Products[0] = deserialize(Product, test); */
 
     this.Categories[0].products = [this.Products[0], this.Products[1]];
     this.Categories[1].products = [this.Products[2], this.Products[3], this.Products[4]];

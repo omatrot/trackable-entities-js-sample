@@ -1,7 +1,7 @@
 import { TrackingState } from 'trackable-entities';
-import { Product } from './models/entities';
 import { Component } from '@angular/core';
 import { TrackableSet } from 'trackable-entities';
+import { Product } from './models/productdcerialize';
 
 @Component({
   selector: 'app-root',
